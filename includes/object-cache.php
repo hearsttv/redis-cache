@@ -3,7 +3,7 @@
 Plugin Name: Redis Object Cache Drop-In
 Plugin URI: http://wordpress.org/plugins/redis-cache/
 Description: A persistent object cache backend powered by Redis. Supports Predis, PhpRedis, HHVM, replication, clustering and WP-CLI.
-Version: 1.3.8
+Version: 1.3.9
 Author: Till Krüss
 Author URI: https://till.im/
 License: GPLv3
@@ -383,7 +383,7 @@ class WP_Object_Cache
             'port' => 6379
         );
 
-        foreach (array( 'scheme', 'host', 'port', 'path', 'password', 'database' ) as $setting) {
+        foreach (array( 'scheme', 'host', 'port', 'path', 'password', 'database', 'read_write_timeout', 'timeout' ) as $setting) {
             $constant = sprintf('WP_REDIS_%s', strtoupper($setting));
             if (defined($constant)) {
                 $parameters[ $setting ] = constant($constant);
