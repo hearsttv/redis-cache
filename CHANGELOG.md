@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.4.3
+
+* Require PHP 5.4 or newer
+* Use pretty print in diagnostics
+* Throw exception if Redis library is missing
+* Fixed cache not flushing for some users
+* Fixed admin issues when `WP_REDIS_DISABLED` is `false`
+
+## 1.4.2
+
+* Added graceful Redis failures and `WP_REDIS_GRACEFUL` constant
+* Improved cluster support
+* Added `redis_cache_expiration` filter
+* Renamed `redis_object_cache_get` filter to `redis_object_cache_get_value`
+
+## 1.4.1
+
+* Fixed potential fatal error related to `wp_suspend_cache_addition()`
+
+## 1.4.0
+
+* Added support for igbinary
+* Added support for `wp_suspend_cache_addition()`
+
+## 1.3.9
+
+* Fixed `WP_REDIS_SHARDS` not showing up in server list
+* Fixed `WP_REDIS_SHARDS` not working when using PECL extension
+* Removed `WP_REDIS_SCHEME` and `WP_REDIS_PATH` leftovers
+
 ## 1.3.8
 
 * Switched from single file Predis version to full library
