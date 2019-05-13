@@ -80,6 +80,14 @@ To adjust the configuration, define any of the following constants in your `wp-c
 
   Set to `true` to disable the object cache at runtime.
 
+* `WP_REDIS_GRACEFUL` (default: _not set_)
+
+  Set to `false` to disable graceful failures and throw exceptions.
+
+* `WP_REDIS_IGBINARY` (default: _not set_)
+
+  Set to `true` to enable the [igbinary](https://github.com/igbinary/igbinary) serializer.
+
 
 ## Replication & Clustering
 
@@ -124,8 +132,9 @@ define( 'WP_REDIS_SHARDS', [
 
 ```php
 define( 'WP_REDIS_CLUSTER', [
-    'tcp://127.0.0.1:6379?database=15&alias=node-01',
-    'tcp://127.0.0.2:6379?database=15&alias=node-02',
+    'tcp://127.0.0.1:6379?alias=node-01',
+    'tcp://127.0.0.2:6379?alias=node-02',
+    'tcp://127.0.0.3:6379?alias=node-03',
 ] );
 ```
 
