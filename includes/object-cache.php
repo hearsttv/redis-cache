@@ -685,7 +685,13 @@ class WP_Object_Cache
      */
     public function flush($delay = 0)
     {
-        $delay = abs(intval($delay));
+	    $disable_flush = defined('WP_REDIS_DISABLE_FLUSH') ? WP_REDIS_DISABLE_FLUSH : false;
+
+	    if($disable_flush) {
+		    return true;
+	    }
+
+	    $delay = abs(intval($delay));
 
         if ($delay) {
             sleep($delay);
