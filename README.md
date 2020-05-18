@@ -5,6 +5,21 @@ A persistent object cache backend powered by Redis. Supports [Predis](https://gi
 Forked from Eric Mann's and Erick Hitter's [Redis Object Cache](https://github.com/ericmann/Redis-Object-Cache).
 
 
+## Redis Cache Pro
+
+A **business class** Redis object cache backend. Truly reliable, highly optimized, fully customizable and with a dedicated engineer when you most need it.
+
+* Rewritten for raw performance
+* WordPress object cache API compliant
+* Easy debugging & logging
+* Cache analytics and preloading
+* Fully unit tested (100% code coverage)
+* Secure connections with TLS
+* Health checks via WordPress, WP CLI & Debug Bar
+* Optimized for WooCommerce, Jetpack & Yoast SEO
+
+Learn more about [Redis Cache Pro](https://wprediscache.com/?utm_source=wp-plugin&amp;utm_medium=readme).
+
 ## Installation
 
 For detailed installation instructions, please read the [standard installation procedure for WordPress plugins](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins).
@@ -51,6 +66,18 @@ To adjust the connection parameters, define any of the following constants in yo
 
   Accepts a value used to authenticate with a Redis server protected by password with the `AUTH` command.
 
+* `WP_REDIS_TIMEOUT` (default: `5`)
+
+  Amount of time in seconds (fractions of a second allowed) to attempt initial connection to Redis server before failing.
+
+* `WP_REDIS_READ_TIMEOUT` (default: `5`)
+
+  Amount of time in seconds (fractions of a second allowed) to attempt a read from the Redis server before failing.
+
+* `WP_REDIS_RETRY_INTERVAL` (default: _not set_)
+
+  Amount of time in milliseconds to retry a failed connection attempt.
+
 
 ## Configuration Parameters
 
@@ -76,6 +103,10 @@ To adjust the configuration, define any of the following constants in your `wp-c
 
   Set the cache groups that should not be cached in Redis.
 
+* `WP_REDIS_UNFLUSHABLE_GROUPS` (default: _not set_)
+
+  Set groups not being flushed during a selective cache flush.
+
 * `WP_REDIS_DISABLED` (default: _not set_)
 
   Set to `true` to disable the object cache at runtime.
@@ -84,9 +115,17 @@ To adjust the configuration, define any of the following constants in your `wp-c
 
   Set to `false` to disable graceful failures and throw exceptions.
 
+* `WP_REDIS_SERIALIZER` (default: _not set_)
+
+  Use PhpRedis’ built-in serializers. Supported values are `Redis::SERIALIZER_PHP` and `Redis::SERIALIZER_IGBINARY`.
+
 * `WP_REDIS_IGBINARY` (default: _not set_)
 
-  Set to `true` to enable the [igbinary](https://github.com/igbinary/igbinary) serializer.
+  Set to `true` to enable the [igbinary](https://github.com/igbinary/igbinary) serializer. Ignored when `WP_REDIS_SERIALIZER` is set.
+
+* `WP_REDIS_DISABLE_BANNERS` (default: _not set_)
+
+  Set to `true` to disable promotions for [Redis Cache Pro](https://wprediscache.com/).
 
 
 ## Replication & Clustering
