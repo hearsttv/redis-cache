@@ -1,5 +1,82 @@
 # Changelog
 
+## [Unreleased]
+
+- Fixed logic of prefix suggestion
+
+## 1.5.9
+
+- Fixed missing `$info` variable assignment in constructor
+- Fixed MaxTTL warning condition
+- Switched to using default button styles
+
+## 1.5.8
+
+- Added warning message about invalid MaxTTL
+- Added warning about unmaintained Predis library
+- Added suggestion about shorter, human-readable prefixes
+- Added Redis Cache Pro compatibility to settings
+- Fixed flushing the cache when the prefix contains special characters
+- Fixed calling Redis `INFO` when using clusters
+- Cleaned up the settings a little bit
+
+## 1.5.7
+
+- Added support for PhpRedis TLS connections
+- Added support for timeout, read timeout and password when using PhpRedis cluster
+- Fixed issue with `INFO` command
+- Fixed object cloning when setting cache keys
+
+## 1.5.6
+
+- Added object cloning to in-memory cache
+- Fixed PHP notice related to `read_timeout` parameter
+
+## 1.5.5
+
+Please flush the object cache after updating the drop to v1.5.5 to avoid dead keys filling up Redis memory.
+
+- Removed lowercasing keys
+- Remove scheduled metrics event
+- Fixed Redis version call when using replication
+
+## 1.5.4
+- Removed metrics
+
+## 1.5.3
+
+- Fixed: Call to undefined function `get_plugin_data()`
+- Fixed: Call to undefined method `WP_Object_Cache::redis_version()`
+
+## 1.5.2
+
+* Added Redis version to diagnostics
+* Added `WP_REDIS_DISABLE_BANNERS` constant to disable promotions
+* Fixed an issue with `redis.replicate_commands()`
+
+## 1.5.1
+
+This plugin turned 5 years today (Nov 14th) and its only fitting to release the business edition today as well. [Redis Cache Pro](https://wprediscache.com/) is a truly reliable, highly optimized and easy to debug rewrite of this plugin for SMBs.
+
+* Added execution times to actions
+* Added `WP_REDIS_VERSION` constant
+* Fixed PhpRedis v3 compatibility
+* Fixed an issue with selective flushing
+* Fixed an issue with `mb_*` functions not existing
+* Replaced Email Address Encoder card with Redis Cache Pro card
+* Gather version metrics for better decision making
+
+## 1.5.0
+
+Since Predis isn't maintained any longer, it's highly recommended to switch over to PhpRedis (the Redis PECL extension).
+
+* Improved Redis key name builder
+* Added support for PhpRedis serializers
+* Added `redis_object_cache_error` action
+* Added timeout, read-timeout and retry configuration
+* Added unflushable groups (defaults to `['userlogins']`)
+* Fixed passwords not showing in server list
+
 ## 1.4.3
 
 * Require PHP 5.4 or newer
@@ -147,7 +224,7 @@
 
 * Added support for HHVM's Redis extension
 * Added support for PECL Redis extension
-* Added `WP_REDIS_CLIENT` constant, to set prefered Redis client
+* Added `WP_REDIS_CLIENT` constant, to set preferred Redis client
 * Added `WP_REDIS_MAXTTL` constant, to force expiration of cache keys
 * Improved `add_or_replace()`, `get()`, `set()` and `delete()` methods
 * Improved admin screen styles
